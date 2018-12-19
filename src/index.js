@@ -62,9 +62,12 @@ const initializeStaticAssetsManager = ({
   });
 };
 
-const getStaticAssetsManager = () => staticAssetsManager;
+const staticUrl = (filename, shouldAppendCacheBust) => staticAssetsManager.getStaticUrl({
+  filename,
+  shouldAppendCacheBust,
+});
 
 module.exports = {
   initializeStaticAssetsManager,
-  getStaticAssetsManager,
+  staticUrl,
 };

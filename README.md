@@ -12,7 +12,7 @@ npm install @bufferapp/static-assets
 
 ## Usage
 
-To utilize the `staticURL` function, you'll need to first initialize the
+To utilize the `staticUrl` function, you'll need to first initialize the
 static assets manager:
 
 ```js

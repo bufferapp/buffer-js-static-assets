@@ -62,6 +62,24 @@ const initializeStaticAssetsManager = ({
   });
 };
 
+const initializeStaticAssetsManagerSync = ({
+  staticAssetVersionsFilename,
+  staticAssetDirLocal,
+  staticAssetDirCDN,
+}) => {
+  staticAssetsManager = new StaticAssetsManager({ staticAssetDirLocal, staticAssetDirCDN });
+
+  if (!staticAssetVersionsFilename) { /* eslint-disable no-console */
+    console.warning('WARNING: staticAssetVersionsFilename not specified. This should be set in production');
+    return false; /* eslint-enable no-console */
+  }
+
+  const contents = fs.readFileSync(staticAssetVersionsFilename, 'utf8');
+  const staticAssetVersions = JSON.parse(contents);
+  staticAssetsManager.setStaticAssetVersions({ staticAssetVersions });
+  return true;
+};
+
 const staticUrl = (filename, shouldAppendCacheBust) => staticAssetsManager.getStaticUrl({
   filename,
   shouldAppendCacheBust,
@@ -69,5 +87,6 @@ const staticUrl = (filename, shouldAppendCacheBust) => staticAssetsManager.getSt
 
 module.exports = {
   initializeStaticAssetsManager,
+  initializeStaticAssetsManagerSync,
   staticUrl,
 };

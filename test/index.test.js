@@ -3,6 +3,7 @@ const MockDate = require('mockdate');
 const {
   staticUrl,
   initializeStaticAssetsManager,
+  initializeStaticAssetsManagerSync,
 } = require('../src');
 
 const staticAssetVersionsFilename = 'staticAssets.json';
@@ -24,6 +25,12 @@ afterAll(() => {
 
 test('should return a correct css cdn url', async () => {
   await initializeStaticAssetsManager({ staticAssetVersionsFilename });
+  expect(staticUrl(filename)).toBe(cdnUrl);
+});
+
+test('should load synchronously and return true with valid filename', () => {
+  const result = initializeStaticAssetsManagerSync({ staticAssetVersionsFilename });
+  expect(result).toBe(true);
   expect(staticUrl(filename)).toBe(cdnUrl);
 });
 

@@ -70,7 +70,7 @@ const initializeStaticAssetsManagerSync = ({
   staticAssetsManager = new StaticAssetsManager({ staticAssetDirLocal, staticAssetDirCDN });
 
   if (!staticAssetVersionsFilename) { /* eslint-disable no-console */
-    console.warning('WARNING: staticAssetVersionsFilename not specified. This should be set in production');
+    console.warn('WARNING: staticAssetVersionsFilename not specified. This should be set in production');
     return false; /* eslint-enable no-console */
   }
 

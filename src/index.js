@@ -69,9 +69,11 @@ const initializeStaticAssetsManagerSync = ({
 }) => {
   staticAssetsManager = new StaticAssetsManager({ staticAssetDirLocal, staticAssetDirCDN });
 
-  if (!staticAssetVersionsFilename) { /* eslint-disable no-console */
+  if (!staticAssetVersionsFilename) {
+    /* eslint-disable no-console */
     console.warn('WARNING: staticAssetVersionsFilename not specified. This should be set in production');
-    return false; /* eslint-enable no-console */
+    /* eslint-enable no-console */
+    return false;
   }
 
   const contents = fs.readFileSync(staticAssetVersionsFilename, 'utf8');

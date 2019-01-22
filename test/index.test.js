@@ -12,6 +12,11 @@ const filename = 'css/test.css';
 const cdnUrl = 'https://cdn.com/css/test.12345.css';
 
 beforeAll(() => {
+  /* eslint-disable no-console */
+  // Important console.log, do not delete: Fixing issue with console, jest and mock-fs:
+  // see here https://github.com/facebook/jest/issues/5792#issuecomment-376678248
+  console.log('beforeAll');
+  /* eslint-enable no-console */
   // Creates an in-memory file system
   mock({
     [staticAssetVersionsFilename]: JSON.stringify({ [`/public/${filename}`]: cdnUrl }),
@@ -32,6 +37,11 @@ test('should load synchronously and return true with valid filename', () => {
   const result = initializeStaticAssetsManagerSync({ staticAssetVersionsFilename });
   expect(result).toBe(true);
   expect(staticUrl(filename)).toBe(cdnUrl);
+});
+
+test('should load synchronously and return false because of missing filename', () => {
+  const result = initializeStaticAssetsManagerSync({ });
+  expect(result).toBe(false);
 });
 
 test('should return local url', async () => {

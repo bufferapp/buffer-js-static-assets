@@ -1,0 +1,48 @@
+{
+  "name": "@bufferapp/js-static-assets",
+  "version": "0.0.1",
+  "description": "Generate static URLs for assets",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint --ext .js test/ src/",
+    "test": "npm run lint && jest --coverage",
+    "test-watch": "jest --watch",
+    "test-update": "jest -u"
+  },
+  "author": "philippe.miguet@gmail.com",
+  "homepage": "https://github.com/bufferapp/buffer-js-static-assets#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bufferapp/buffer-js-static-assets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bufferapp/buffer-js-static-assets/issues"
+  },
+  "files": [
+    "src"
+  ],
+  "devDependencies": {
+    "eslint": "^5.10.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.6.0",
+    "mock-fs": "^4.7.0",
+    "mockdate": "^2.0.2"
+  },
+  "jest": {
+    "verbose": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -51,9 +51,11 @@ app.get('/sweet', (req, res) => {
 We have a few configuration options that can be passed to `initStaticAssets` in
 a single object argument (ex. `initStaticAssets({ path: '/static' })`):
 
-* `staticAssetVersionsFilename` - The name of the static asset manifest file.
-* `staticAssetDirLocal` - The relative path where static assets are served during local dev. Usually via express-static.
-* `staticAssetDirCDN` - This is the directory relative to your working directory where your static assets are saved. This is used to look up static files in the manifest (See manifest section below).
+* `filename` (default: `staticAssets.json`) - The name of the static asset manifest file.
+* `useLocal` (defaults to true when `NODE_ENV` is `development`, false otherwise) - Forces the use of the locally served static asset instead of the URL in the manifest.
+* `path` (default: `/`) - The relative path where static assets are served during local dev. Usually via express-static.
+* `localPort` - Specifies a different port to serve static assets from locally. Useful when running Webpack dev server on a port separate from your application.
+* `dir` (default: `public`) - This is the directory relative to your working directory where your static assets are saved. This is used to look up static files in the manifest (See manifest section below).
 
 ### Static Asset Manifest
 

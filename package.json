@@ -1,6 +1,6 @@
 {
   "name": "@bufferapp/js-static-assets",
-  "version": "0.0.1-beta-04",
+  "version": "0.0.1",
   "description": "Generate static URLs for assets",
   "main": "src/index.js",
   "scripts": {
